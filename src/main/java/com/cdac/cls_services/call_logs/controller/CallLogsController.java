@@ -1,6 +1,7 @@
 package com.cdac.cls_services.call_logs.controller;
 
 import com.cdac.cls_services.call_logs.dto.CallLogsListDto;
+import com.cdac.cls_services.call_logs.models.CallLogModel;
 import com.cdac.cls_services.call_logs.service.CallLogsService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,13 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(name = "/api/call_logs")
+@RequestMapping("/api/call_logs")
 @AllArgsConstructor
 public class CallLogsController {
     private final CallLogsService callLogsService;
 
     @GetMapping("/getList")
-    public List<CallLogsListDto> getCallLogsList() {
+    public List<CallLogModel> getCallLogsList() {
         return callLogsService.getCallLogsList();
     }
 }

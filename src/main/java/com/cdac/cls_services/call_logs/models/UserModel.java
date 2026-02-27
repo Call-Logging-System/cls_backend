@@ -8,23 +8,23 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @Table(name = "user_m")
-public class User {
+public class UserModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "email",unique = true)
+    @Column(name = "email",unique = true, nullable = false)
     private String email;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "role_id")
+    @Column(name = "role_id", nullable = false)
     private Integer role;
 
     @Column(name = "is_active")

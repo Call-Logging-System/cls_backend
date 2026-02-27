@@ -9,29 +9,29 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @Table(name = "call_log_m")
-public class CallLog {
+public class CallLogModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "call_date")
+    @Column(name = "call_date", nullable = false)
     private LocalDate callDate;
 
-    @Column(name = "issue_reported")
+    @Column(name = "issue_reported" , nullable = false)
     private String issueReported;
 
-    @Column(name = "issue_type")
+    @Column(name = "issue_type", nullable = false)
     private Character issueType;
 
     @Column(name = "description")
     private String description;
 
-    @Column(name = "reported_by")
+    @Column(name = "reported_by", nullable = false)
     private Integer reportedBy;
 
-    @Column(name = "reported_to")
+    @Column(name = "reported_to", nullable = false)
     private Integer reportedTo;
 
     @Column(name = "solved_by")
@@ -46,7 +46,7 @@ public class CallLog {
     @Column(name = "is_released")
     private Boolean isReleased;
 
-    @Column(name = "call_start_time")
+    @Column(name = "call_start_time", nullable = false)
     private LocalDateTime callStartTime;
 
     @Column(name = "call_end_time")
@@ -55,7 +55,7 @@ public class CallLog {
     @Column(name = "time_taken_minutes")
     private Integer timeTakenMinutes;
 
-    @Column(name = "created_by")
+    @Column(name = "created_by", nullable = false)
     private Integer createdBy;
 
     @Column(name = "createdAt")

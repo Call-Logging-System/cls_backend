@@ -8,26 +8,26 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @Table(name = "office_m")
-public class Office {
+public class OfficeModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "office_user_name")
+    @Column(name = "office_user_name", nullable = false)
     private String officeUserName;
 
-    @Column(name = "office_level")
+    @Column(name = "office_level", nullable = false)
     private Long officeLevel;
 
-    @Column(name = "contact_number")
+    @Column(name = "contact_number", nullable = false)
     private String contactNumber;
 
     @Column(name = "alternate_contact_number")
     private String alternateContactNumber;
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false)
     private String email;
 
     @Column(name = "address")
