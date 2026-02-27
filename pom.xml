@@ -13,7 +13,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>cls_services</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Call Logging System</description>
 	<url/>
 	<licenses>
 		<license/>
