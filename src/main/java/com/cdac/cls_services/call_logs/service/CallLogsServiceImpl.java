@@ -31,7 +31,7 @@ public class CallLogsServiceImpl implements CallLogsService{
             OfficeModel office = new OfficeModel();
             office.setOfficeUserName(dto.getUserName());
             office.setOfficeLevel(dto.getOfficeLevel());
-    
+
             officeRepo.save(office);
         }
     }

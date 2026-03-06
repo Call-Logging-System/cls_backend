@@ -28,6 +28,6 @@ public class CallLogsController {
     @PostMapping("/office/save")
     public ResponseEntity<ResponseDto> saveOffice(@RequestBody AddOfficeReqDto dto){
         callLogsService.saveOffice(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseDto("Office created successfully"));
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseDto("200","Office created successfully")); // To-do - Change the status code to created status code
     }
 }
