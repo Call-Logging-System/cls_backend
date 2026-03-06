@@ -19,15 +19,15 @@ public class OfficeModel {
     private String officeUserName;
 
     @Column(name = "office_level", nullable = false)
-    private Long officeLevel;
+    private Integer officeLevel;
 
-    @Column(name = "contact_number", nullable = false)
+    @Column(name = "contact_number")
     private String contactNumber;
 
     @Column(name = "alternate_contact_number")
     private String alternateContactNumber;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email")
     private String email;
 
     @Column(name = "address")

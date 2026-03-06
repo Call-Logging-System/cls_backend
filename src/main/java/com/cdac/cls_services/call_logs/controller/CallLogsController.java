@@ -1,13 +1,15 @@
 package com.cdac.cls_services.call_logs.controller;
 
+import com.cdac.cls_services.call_logs.dto.AddOfficeReqDto;
+import com.cdac.cls_services.call_logs.dto.CallLogResponseDto;
 import com.cdac.cls_services.call_logs.dto.CallLogsListDto;
+import com.cdac.cls_services.call_logs.dto.ResponseDto;
 import com.cdac.cls_services.call_logs.models.CallLogModel;
 import com.cdac.cls_services.call_logs.service.CallLogsService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,7 +21,13 @@ public class CallLogsController {
     private final CallLogsService callLogsService;
 
     @GetMapping("/getList")
-    public List<CallLogModel> getCallLogsList() {
+    public List<CallLogResponseDto> getCallLogsList() {
         return callLogsService.getCallLogsList();
+    }
+
+    @PostMapping("/office/save")
+    public ResponseEntity<ResponseDto> saveOffice(@RequestBody AddOfficeReqDto dto){
+        callLogsService.saveOffice(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseDto("Office created successfully"));
     }
 }
