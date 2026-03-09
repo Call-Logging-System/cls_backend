@@ -1,0 +1,13 @@
+package com.cdac.cls_services.call_logs.repositories;
+
+import com.cdac.cls_services.call_logs.models.OfficeModel;
+import com.cdac.cls_services.call_logs.models.UserModel;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+@Repository
+public interface UserRepository extends JpaRepository<UserModel,Integer> {
+    List<UserModel> findByIsActiveTrueAndRole(Long roleId);
+}

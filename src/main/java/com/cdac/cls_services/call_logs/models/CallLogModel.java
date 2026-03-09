@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Data
 @Entity
@@ -47,10 +48,10 @@ public class CallLogModel {
     private Boolean isReleased;
 
     @Column(name = "call_start_time", nullable = false)
-    private LocalDateTime callStartTime;
+    private LocalTime callStartTime;
 
     @Column(name = "call_end_time")
-    private LocalDateTime callEndTime;
+    private LocalTime callEndTime;
 
     @Column(name = "time_taken_minutes")
     private Integer timeTakenMinutes;

@@ -12,4 +12,5 @@ import java.util.List;
 @Repository
 public interface OfficeRepository extends JpaRepository<OfficeModel,Integer> {
     boolean existsByOfficeUserName(String officeUserName);
+    OfficeModel findByOfficeUserName(String officeUserName);
 }

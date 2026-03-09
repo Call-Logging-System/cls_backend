@@ -1,9 +1,6 @@
 package com.cdac.cls_services.call_logs.controller;
 
-import com.cdac.cls_services.call_logs.dto.AddOfficeReqDto;
-import com.cdac.cls_services.call_logs.dto.CallLogResponseDto;
-import com.cdac.cls_services.call_logs.dto.CallLogsListDto;
-import com.cdac.cls_services.call_logs.dto.ResponseDto;
+import com.cdac.cls_services.call_logs.dto.*;
 import com.cdac.cls_services.call_logs.models.CallLogModel;
 import com.cdac.cls_services.call_logs.service.CallLogsService;
 import lombok.AllArgsConstructor;
@@ -28,6 +25,17 @@ public class CallLogsController {
     @PostMapping("/office/save")
     public ResponseEntity<ResponseDto> saveOffice(@RequestBody AddOfficeReqDto dto){
         callLogsService.saveOffice(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseDto("200","Office created successfully")); // To-do - Change the status code to created status code
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseDto("201","Office created successfully")); // To-do - Change the status code to created status code
+    }
+
+    @GetMapping("/users/dropdown")
+    public List<DropdownDto> getUsersDropdown() {
+        return callLogsService.getUsersDropdown();
+    }
+
+    @PostMapping("/save")
+    public ResponseEntity<ResponseDto> saveCallLog(@RequestBody AddCallLogDto dto){
+        callLogsService.saveCallLog(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseDto("201","Call saved successfully")); // To-do - Change the status code to created status code
     }
 }
