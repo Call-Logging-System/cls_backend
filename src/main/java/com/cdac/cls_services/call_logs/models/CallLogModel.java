@@ -2,6 +2,8 @@ package com.cdac.cls_services.call_logs.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -59,9 +61,11 @@ public class CallLogModel {
     @Column(name = "created_by", nullable = false)
     private Integer createdBy;
 
+    @CreationTimestamp
     @Column(name = "createdAt")
     private LocalDateTime createdAt;
 
+    @UpdateTimestamp
     @Column(name = "updatedAt")
     private LocalDateTime updatedAt;
 

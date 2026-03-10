@@ -1,10 +1,6 @@
 package com.cdac.cls_services.call_logs.service;
 
-import com.cdac.cls_services.call_logs.dto.AddCallLogDto;
-import com.cdac.cls_services.call_logs.dto.AddOfficeReqDto;
-import com.cdac.cls_services.call_logs.dto.CallLogResponseDto;
-import com.cdac.cls_services.call_logs.dto.DropdownDto;
-import com.cdac.cls_services.call_logs.models.CallLogModel;
+import com.cdac.cls_services.call_logs.dto.*;
 
 import java.util.List;
 
@@ -16,4 +12,6 @@ public interface CallLogsService {
     List<DropdownDto> getUsersDropdown();
 
     void saveCallLog(AddCallLogDto dto);
+
+    void delete(DeleteCallLogDto dto);
 }

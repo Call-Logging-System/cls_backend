@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -25,7 +26,7 @@ public class CallLogsController {
     @PostMapping("/office/save")
     public ResponseEntity<ResponseDto> saveOffice(@RequestBody AddOfficeReqDto dto){
         callLogsService.saveOffice(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseDto("201","Office created successfully")); // To-do - Change the status code to created status code
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseDto("201","Office created successfully"));
     }
 
     @GetMapping("/users/dropdown")
@@ -36,6 +37,12 @@ public class CallLogsController {
     @PostMapping("/save")
     public ResponseEntity<ResponseDto> saveCallLog(@RequestBody AddCallLogDto dto){
         callLogsService.saveCallLog(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseDto("201","Call saved successfully")); // To-do - Change the status code to created status code
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseDto("201","Call saved successfully"));
+    }
+
+    @PostMapping("/delete")
+    public ResponseEntity<ResponseDto> deleteCallLog(@RequestBody DeleteCallLogDto dto){
+        callLogsService.delete(dto);
+        return ResponseEntity.ok(new ResponseDto("200", "Call Log deleted successfully"));
     }
 }
