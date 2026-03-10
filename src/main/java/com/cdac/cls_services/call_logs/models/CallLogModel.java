@@ -31,8 +31,8 @@ public class CallLogModel {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "reported_by", nullable = false)
-    private Integer reportedBy;
+    @Column(name = "office_id", nullable = false)
+    private Integer officeId;
 
     @Column(name = "reported_to", nullable = false)
     private Integer reportedTo;
@@ -68,5 +68,8 @@ public class CallLogModel {
     @UpdateTimestamp
     @Column(name = "updatedAt")
     private LocalDateTime updatedAt;
+
+    @Column(name = "reported_by")
+    private String reportedBy;
 
 }

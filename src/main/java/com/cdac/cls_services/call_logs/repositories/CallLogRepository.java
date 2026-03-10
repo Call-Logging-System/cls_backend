@@ -20,7 +20,7 @@ public interface CallLogRepository extends JpaRepository<CallLogModel,Integer> {
             c.timeTakenMinutes
         )
         FROM CallLogModel c
-        JOIN OfficeModel o ON c.reportedBy = o.id
+        JOIN OfficeModel o ON c.officeId = o.id
     """)
     List<CallLogResponseDto> getCallLogs();
 }

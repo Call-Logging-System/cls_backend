@@ -69,7 +69,7 @@ public class CallLogsServiceImpl implements CallLogsService{
         model.setIssueReported(dto.getIssueReported());
         model.setIssueType(dto.getIssueType().charAt(0));
         model.setDescription(dto.getDescription());
-        model.setReportedBy(Integer.valueOf(office.getId().toString()));
+        model.setOfficeId(Integer.valueOf(office.getId().toString()));
         model.setReportedTo(dto.getReportedTo());
         model.setSolvedBy(dto.getSolvedBy());
         model.setPriority(dto.getPriority().charAt(0));
