@@ -45,4 +45,15 @@ public class CallLogsController {
         callLogsService.delete(dto);
         return ResponseEntity.ok(new ResponseDto("200", "Call Log deleted successfully"));
     }
+
+    @PostMapping("/get")
+    public CallLogResponseDto getCallLog(@RequestBody GetCallLogDto dto) {
+        return callLogsService.get(dto);
+    }
+
+    @PostMapping("/update")
+    public ResponseEntity<ResponseDto> updateCallLog(@RequestBody AddCallLogDto dto){
+        callLogsService.update(dto);
+        return ResponseEntity.ok(new ResponseDto("200","Call updated successfully"));
+    }
 }

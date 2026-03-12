@@ -96,4 +96,46 @@ public class CallLogsServiceImpl implements CallLogsService{
             callLogRepo.deleteById(dto.getId());
         }
     }
+
+    @Override
+    public CallLogResponseDto get(GetCallLogDto dto) {
+
+        return callLogRepo.getCallLogById(dto.getId()).orElseThrow(()-> new RuntimeException("No Call Log Found"));
+    }
+
+    @Override
+    public void update(AddCallLogDto dto) {
+        OfficeModel office = officeRepo.findByOfficeUserName(dto.getOfficeUserName());
+
+        if(office == null){
+            OfficeModel officeModel = new OfficeModel();
+            officeModel.setOfficeUserName(dto.getOfficeUserName());
+            officeModel.setOfficeLevel(dto.getOfficeLevel());
+
+            office = officeRepo.save(officeModel);
+        }
+
+        CallLogModel model = callLogRepo.findById(dto.getId()).orElseThrow(()-> new RuntimeException("No Record Found"));
+
+        model.setCallDate(LocalDate.parse(dto.getCallDate()));
+        model.setIssueReported(dto.getIssueReported());
+        model.setIssueType(dto.getIssueType().charAt(0));
+        model.setDescription(dto.getDescription());
+        model.setOfficeId(Integer.valueOf(office.getId().toString()));
+        model.setReportedTo(dto.getReportedTo());
+        model.setSolvedBy(dto.getSolvedBy());
+        model.setPriority(dto.getPriority().charAt(0));
+        model.setStatus(dto.getStatus().charAt(0));
+        model.setIsReleased(dto.getIsReleased().equals("Y") ? true : false);
+        model.setCallStartTime(dto.getCallStartTime());
+        model.setCallEndTime(dto.getCallEndTime());
+
+        if (dto.getCallStartTime() != null && dto.getCallEndTime() != null) {
+            long totalSeconds = ChronoUnit.SECONDS.between(dto.getCallStartTime(), dto.getCallEndTime());
+            long timeTaken = (long) Math.ceil(totalSeconds / 60.0);
+            model.setTimeTakenMinutes((int) timeTaken);
+        }
+
+        callLogRepo.save(model);
+    }
 }

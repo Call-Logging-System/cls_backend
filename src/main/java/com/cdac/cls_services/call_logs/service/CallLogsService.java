@@ -14,4 +14,8 @@ public interface CallLogsService {
     void saveCallLog(AddCallLogDto dto);
 
     void delete(DeleteCallLogDto dto);
+
+    CallLogResponseDto get(GetCallLogDto dto);
+
+    void update(AddCallLogDto dto);
 }

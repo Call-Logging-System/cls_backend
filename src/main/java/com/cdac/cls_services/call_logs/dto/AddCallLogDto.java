@@ -2,10 +2,12 @@ package com.cdac.cls_services.call_logs.dto;
 
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Data
 public class AddCallLogDto {
+    private Integer id;
     private String officeUserName;
     private Integer officeLevel;
     private String issueReported;
@@ -19,6 +21,6 @@ public class AddCallLogDto {
     private LocalTime callStartTime;
     private LocalTime callEndTime;
     private Integer solvedBy;
-    private String isReleased;
-    private String releaseDate;
+    private Boolean isReleased;
+    private LocalDate releaseDate;
 }
