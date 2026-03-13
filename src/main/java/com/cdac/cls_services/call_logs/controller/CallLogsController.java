@@ -2,6 +2,7 @@ package com.cdac.cls_services.call_logs.controller;
 
 import com.cdac.cls_services.call_logs.dto.*;
 import com.cdac.cls_services.call_logs.models.CallLogModel;
+import com.cdac.cls_services.call_logs.models.OfficeModel;
 import com.cdac.cls_services.call_logs.service.CallLogsService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -55,5 +56,10 @@ public class CallLogsController {
     public ResponseEntity<ResponseDto> updateCallLog(@RequestBody AddCallLogDto dto){
         callLogsService.update(dto);
         return ResponseEntity.ok(new ResponseDto("200","Call updated successfully"));
+    }
+
+    @GetMapping("/offices")
+    public List<OfficeModel> getOffices() {
+        return callLogsService.getOffices();
     }
 }

@@ -138,4 +138,9 @@ public class CallLogsServiceImpl implements CallLogsService{
 
         callLogRepo.save(model);
     }
+
+    @Override
+    public List<OfficeModel> getOffices() {
+        return officeRepo.findAll();
+    }
 }
