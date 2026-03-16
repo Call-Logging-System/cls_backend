@@ -29,15 +29,19 @@ public class CallLogResponseDto {
     private String officeUserName;   // from OfficeModel join
     private Integer officeLevel;
 
-    public CallLogResponseDto(Long id, LocalDate callDate, String issueReported, Character issueType, String reportedBy, Character status, Integer timeTakenMinutes) {
+    public CallLogResponseDto(Long id, LocalDate callDate, String issueReported, Character issueType, String reportedBy, Character status,LocalTime callStartTime, LocalTime callEndTime, Integer timeTakenMinutes) {
         this.id = id;
         this.callDate = callDate;
         this.issueReported = issueReported;
         this.issueType = issueType;
         this.reportedBy = reportedBy;
         this.status = status;
+        this.callStartTime = callStartTime;
+        this.callEndTime = callEndTime;
         this.timeTakenMinutes = timeTakenMinutes;
     }
+
+
 
 
 }

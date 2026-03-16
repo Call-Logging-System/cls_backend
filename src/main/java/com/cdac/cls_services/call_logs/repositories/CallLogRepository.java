@@ -19,6 +19,8 @@ public interface CallLogRepository extends JpaRepository<CallLogModel,Integer> {
             c.issueType,
             o.officeUserName,
             c.status,
+            c.callStartTime,
+            c.callEndTime,
             c.timeTakenMinutes
         )
         FROM CallLogModel c

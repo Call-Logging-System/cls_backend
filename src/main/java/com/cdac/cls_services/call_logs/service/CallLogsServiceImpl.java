@@ -130,7 +130,10 @@ public class CallLogsServiceImpl implements CallLogsService{
         model.setCallStartTime(dto.getCallStartTime());
         model.setCallEndTime(dto.getCallEndTime());
 
-        if (dto.getCallStartTime() != null && dto.getCallEndTime() != null) {
+        if (dto.getTimeTakenMinutes() != null) {
+            model.setTimeTakenMinutes(dto.getTimeTakenMinutes());
+        } else if (dto.getCallStartTime() != null && dto.getCallEndTime() != null) {
+            // fallback: recalculate only if not provided
             long totalSeconds = ChronoUnit.SECONDS.between(dto.getCallStartTime(), dto.getCallEndTime());
             long timeTaken = (long) Math.ceil(totalSeconds / 60.0);
             model.setTimeTakenMinutes((int) timeTaken);

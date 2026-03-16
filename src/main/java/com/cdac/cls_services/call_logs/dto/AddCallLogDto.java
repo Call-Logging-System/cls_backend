@@ -23,4 +23,5 @@ public class AddCallLogDto {
     private Integer solvedBy;
     private Boolean isReleased;
     private LocalDate releaseDate;
+    private Integer timeTakenMinutes;
 }
