@@ -146,4 +146,14 @@ public class CallLogsServiceImpl implements CallLogsService{
     public List<OfficeModel> getOffices() {
         return officeRepo.findAll();
     }
+
+    @Override
+    public void deleteOffice(DeleteOfficeDto dto) {
+        boolean exists = officeRepo.existsById(dto.getId());
+        if(exists){
+            officeRepo.deleteById(dto.getId());
+        }else {
+            throw new RuntimeException("No Record Found");
+        }
+    }
 }

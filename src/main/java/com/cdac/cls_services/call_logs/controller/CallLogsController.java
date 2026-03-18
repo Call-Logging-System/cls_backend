@@ -62,4 +62,10 @@ public class CallLogsController {
     public List<OfficeModel> getOffices() {
         return callLogsService.getOffices();
     }
+
+    @PostMapping("/deleteOffice")
+    public ResponseEntity<ResponseDto> deleteOffice(@RequestBody DeleteOfficeDto dto){
+        callLogsService.deleteOffice(dto);
+        return ResponseEntity.ok(new ResponseDto("200", "Call Log deleted successfully"));
+    }
 }

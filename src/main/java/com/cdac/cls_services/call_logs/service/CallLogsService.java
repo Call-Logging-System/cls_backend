@@ -21,4 +21,6 @@ public interface CallLogsService {
     void update(AddCallLogDto dto);
 
     List<OfficeModel> getOffices();
+
+    void deleteOffice(DeleteOfficeDto dto);
 }
