@@ -6,6 +6,7 @@ import com.cdac.cls_services.call_logs.models.OfficeModel;
 import com.cdac.cls_services.call_logs.repositories.CallLogRepository;
 import com.cdac.cls_services.call_logs.repositories.OfficeRepository;
 import com.cdac.cls_services.call_logs.repositories.UserRepository;
+import com.cdac.cls_services.phone_book.dto.DeleteOfficeDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -147,13 +148,5 @@ public class CallLogsServiceImpl implements CallLogsService{
         return officeRepo.findAll();
     }
 
-    @Override
-    public void deleteOffice(DeleteOfficeDto dto) {
-        boolean exists = officeRepo.existsById(dto.getId());
-        if(exists){
-            officeRepo.deleteById(dto.getId());
-        }else {
-            throw new RuntimeException("No Record Found");
-        }
-    }
+
 }

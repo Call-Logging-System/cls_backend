@@ -2,6 +2,7 @@ package com.cdac.cls_services.call_logs.service;
 
 import com.cdac.cls_services.call_logs.dto.*;
 import com.cdac.cls_services.call_logs.models.OfficeModel;
+import com.cdac.cls_services.phone_book.dto.DeleteOfficeDto;
 
 import java.util.List;
 
@@ -22,5 +23,4 @@ public interface CallLogsService {
 
     List<OfficeModel> getOffices();
 
-    void deleteOffice(DeleteOfficeDto dto);
 }

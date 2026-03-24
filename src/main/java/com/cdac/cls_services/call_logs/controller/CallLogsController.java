@@ -1,8 +1,6 @@
 package com.cdac.cls_services.call_logs.controller;
 
 import com.cdac.cls_services.call_logs.dto.*;
-import com.cdac.cls_services.call_logs.models.CallLogModel;
-import com.cdac.cls_services.call_logs.models.OfficeModel;
 import com.cdac.cls_services.call_logs.service.CallLogsService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -10,9 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/call_logs")
 @AllArgsConstructor
@@ -58,14 +54,5 @@ public class CallLogsController {
         return ResponseEntity.ok(new ResponseDto("200","Call updated successfully"));
     }
 
-    @GetMapping("/offices")
-    public List<OfficeModel> getOffices() {
-        return callLogsService.getOffices();
-    }
 
-    @PostMapping("/deleteOffice")
-    public ResponseEntity<ResponseDto> deleteOffice(@RequestBody DeleteOfficeDto dto){
-        callLogsService.deleteOffice(dto);
-        return ResponseEntity.ok(new ResponseDto("200", "Call Log deleted successfully"));
-    }
 }
