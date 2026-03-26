@@ -1,5 +1,8 @@
-package com.cdac.cls_services.auth;
+package com.cdac.cls_services.auth.filter;
 
+import java.util.Arrays;
+
+import com.cdac.cls_services.auth.util.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -24,6 +27,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+
         // Get the JWT from the cls_token cookie
         String token = jwtUtil.extractTokenFromRequest(request);
 

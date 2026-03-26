@@ -1,6 +1,6 @@
 package com.cdac.cls_services.auth.controller;
 
-import com.cdac.cls_services.auth.JwtUtil;
+import com.cdac.cls_services.auth.util.JwtUtil;
 import com.cdac.cls_services.auth.dto.AuthResponseDto;
 import com.cdac.cls_services.auth.dto.LoginRequestDto;
 import com.cdac.cls_services.call_logs.models.UserModel;
@@ -8,7 +8,6 @@ import com.cdac.cls_services.call_logs.repositories.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

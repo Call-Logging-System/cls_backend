@@ -1,6 +1,6 @@
-package com.cdac.cls_services.auth;
+package com.cdac.cls_services.auth.config;
 
-import jakarta.security.auth.message.config.AuthConfigProvider;
+import com.cdac.cls_services.auth.filter.JwtAuthFilter;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -2,11 +2,17 @@ package com.cdac.cls_services.call_logs.controller;
 
 import com.cdac.cls_services.call_logs.dto.*;
 import com.cdac.cls_services.call_logs.service.CallLogsService;
+import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
@@ -54,5 +60,20 @@ public class CallLogsController {
         return ResponseEntity.ok(new ResponseDto("200","Call updated successfully"));
     }
 
+    @PostMapping("/export/all")
+    public ResponseEntity<byte[]> exportAllCallLogs() {
+        byte[] excelBytes = callLogsService.exportAllCallLogs();
 
+        String filename = "call-logs-"
+                + LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+                + ".xlsx";
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION,
+                        "attachment; filename=\"" + filename + "\"")
+                .contentType(MediaType.parseMediaType(
+                        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"))
+                .contentLength(excelBytes.length)
+                .body(excelBytes);
+    }
 }

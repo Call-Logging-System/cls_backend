@@ -1,4 +1,4 @@
-package com.cdac.cls_services.auth;
+package com.cdac.cls_services.auth.util;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;

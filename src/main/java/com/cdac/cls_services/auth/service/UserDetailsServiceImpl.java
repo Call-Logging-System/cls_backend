@@ -1,4 +1,4 @@
-package com.cdac.cls_services.auth;
+package com.cdac.cls_services.auth.service;
 
 import com.cdac.cls_services.call_logs.models.UserModel;
 import com.cdac.cls_services.call_logs.repositories.UserRepository;
@@ -28,7 +28,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         // Convert role_id integer into a Spring Security "authority"
         // Spring Security expects roles as strings like "ROLE_1", "ROLE_2" etc.
         // Prefix with "ROLE_" by convention — used later for role-based access
-        SimpleGrantedAuthority authority = new SimpleGrantedAuthority("Role_" + user.getRole());
+        SimpleGrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + user.getRole());
 
         // Build and return a Spring Security UserDetails object
         return new User(user.getEmail(), user.getPassword(), List.of(authority));
