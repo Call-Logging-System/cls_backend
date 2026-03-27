@@ -89,7 +89,7 @@ public class ExcelEngine {
         Sheet sheet = wb.createSheet(sheetName);
         CreationHelper ch = wb.getCreationHelper();
 
-        short dateFormat = ch.createDataFormat().getFormat("mm-dd-yy");
+        short dateFormat = ch.createDataFormat().getFormat("dd-mm-yy");
         short timeFormat = ch.createDataFormat().getFormat("h:mm");
 
         CellStyle headerStyle  = buildHeaderStyle(wb);

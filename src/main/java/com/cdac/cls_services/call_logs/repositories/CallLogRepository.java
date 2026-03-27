@@ -29,6 +29,7 @@ public interface CallLogRepository extends JpaRepository<CallLogModel,Integer> {
         JOIN OfficeModel o ON c.officeId = o.id
         LEFT JOIN UserModel reportedToUser ON c.reportedTo = reportedToUser.id
         LEFT JOIN UserModel solvedByUser ON c.solvedBy = solvedByUser.id
+        ORDER BY c.callDate ASC, c.callStartTime ASC
     """)
     List<CallLogResponseDto> getCallLogs();
 
