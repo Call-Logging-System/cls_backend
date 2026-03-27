@@ -28,8 +28,10 @@ public class CallLogResponseDto {
     private Boolean isReleased;
     private String officeUserName;   // from OfficeModel join
     private Integer officeLevel;
+    private String reportedToName;
+    private String solvedByName;
 
-    public CallLogResponseDto(Long id, LocalDate callDate, String issueReported, Character issueType, String reportedBy, Character status,LocalTime callStartTime, LocalTime callEndTime, Integer timeTakenMinutes) {
+    public CallLogResponseDto(Long id, LocalDate callDate, String issueReported, Character issueType, String reportedBy, Character status,LocalTime callStartTime, LocalTime callEndTime, Integer timeTakenMinutes, String reportedToName, String solvedByName) {
         this.id = id;
         this.callDate = callDate;
         this.issueReported = issueReported;
@@ -39,6 +41,33 @@ public class CallLogResponseDto {
         this.callStartTime = callStartTime;
         this.callEndTime = callEndTime;
         this.timeTakenMinutes = timeTakenMinutes;
+        this.reportedToName = reportedToName;
+        this.solvedByName = solvedByName;
+    }
+
+    public CallLogResponseDto(Long id, LocalDate callDate, String issueReported, Character issueType,
+                              String reportedBy, Character status, Integer timeTakenMinutes,
+                              LocalTime callStartTime, LocalTime callEndTime, Character priority,
+                              String description, Integer reportedTo, Integer solvedBy,
+                              LocalDate releaseDate, Boolean isReleased, String officeUserName,
+                              Integer officeLevel) {
+        this.id = id;
+        this.callDate = callDate;
+        this.issueReported = issueReported;
+        this.issueType = issueType;
+        this.reportedBy = reportedBy;
+        this.status = status;
+        this.timeTakenMinutes = timeTakenMinutes;
+        this.callStartTime = callStartTime;
+        this.callEndTime = callEndTime;
+        this.priority = priority;
+        this.description = description;
+        this.reportedTo = reportedTo;
+        this.solvedBy = solvedBy;
+        this.releaseDate = releaseDate;
+        this.isReleased = isReleased;
+        this.officeUserName = officeUserName;
+        this.officeLevel = officeLevel;
     }
 
 

@@ -64,9 +64,7 @@ public class CallLogsController {
     public ResponseEntity<byte[]> exportAllCallLogs() {
         byte[] excelBytes = callLogsService.exportAllCallLogs();
 
-        String filename = "call-logs-"
-                + LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
-                + ".xlsx";
+        String filename = "Forest_CallRegister_Updated";
 
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION,
