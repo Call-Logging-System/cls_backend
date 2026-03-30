@@ -1,7 +1,9 @@
-package com.cdac.cls_services.call_logs.models;
+package com.cdac.cls_services.user_management.models;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -30,9 +32,11 @@ public class UserModel {
     @Column(name = "is_active")
     private Boolean isActive;
 
+    @CreationTimestamp
     @Column(name = "createdAt")
     private LocalDateTime createdAt;
 
+    @UpdateTimestamp
     @Column(name = "updatedAt")
     private LocalDateTime updatedAt;
 

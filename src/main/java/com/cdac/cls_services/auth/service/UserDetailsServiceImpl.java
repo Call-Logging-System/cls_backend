@@ -1,7 +1,7 @@
 package com.cdac.cls_services.auth.service;
 
-import com.cdac.cls_services.call_logs.models.UserModel;
-import com.cdac.cls_services.call_logs.repositories.UserRepository;
+import com.cdac.cls_services.user_management.models.UserModel;
+import com.cdac.cls_services.user_management.repositories.UserManagementRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -16,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private UserRepository userRepo;
+    private UserManagementRepository userRepo;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 

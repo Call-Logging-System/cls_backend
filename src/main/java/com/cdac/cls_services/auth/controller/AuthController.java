@@ -3,8 +3,8 @@ package com.cdac.cls_services.auth.controller;
 import com.cdac.cls_services.auth.util.JwtUtil;
 import com.cdac.cls_services.auth.dto.AuthResponseDto;
 import com.cdac.cls_services.auth.dto.LoginRequestDto;
-import com.cdac.cls_services.call_logs.models.UserModel;
-import com.cdac.cls_services.call_logs.repositories.UserRepository;
+import com.cdac.cls_services.user_management.models.UserModel;
+import com.cdac.cls_services.user_management.repositories.UserManagementRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class AuthController {
     private final AuthenticationManager authManager;
-    private final UserRepository userRepo;
+    private final UserManagementRepository userRepo;
     private final JwtUtil jwtUtil;
     private final PasswordEncoder passwordEncoder;
 

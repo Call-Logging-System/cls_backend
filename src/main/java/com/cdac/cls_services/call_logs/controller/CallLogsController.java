@@ -2,7 +2,6 @@ package com.cdac.cls_services.call_logs.controller;
 
 import com.cdac.cls_services.call_logs.dto.*;
 import com.cdac.cls_services.call_logs.service.CallLogsService;
-import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -10,9 +9,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
@@ -44,14 +40,14 @@ public class CallLogsController {
     }
 
     @PostMapping("/delete")
-    public ResponseEntity<ResponseDto> deleteCallLog(@RequestBody DeleteCallLogDto dto){
-        callLogsService.delete(dto);
+    public ResponseEntity<ResponseDto> deleteCallLog(@RequestBody Integer id){
+        callLogsService.delete(id);
         return ResponseEntity.ok(new ResponseDto("200", "Call Log deleted successfully"));
     }
 
     @PostMapping("/get")
-    public CallLogResponseDto getCallLog(@RequestBody GetCallLogDto dto) {
-        return callLogsService.get(dto);
+    public CallLogResponseDto getCallLog(@RequestBody Integer id) {
+        return callLogsService.get(id);
     }
 
     @PostMapping("/update")

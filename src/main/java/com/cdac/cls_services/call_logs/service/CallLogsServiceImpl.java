@@ -5,7 +5,7 @@ import com.cdac.cls_services.call_logs.models.CallLogModel;
 import com.cdac.cls_services.call_logs.models.OfficeModel;
 import com.cdac.cls_services.call_logs.repositories.CallLogRepository;
 import com.cdac.cls_services.call_logs.repositories.OfficeRepository;
-import com.cdac.cls_services.call_logs.repositories.UserRepository;
+import com.cdac.cls_services.user_management.repositories.UserManagementRepository;
 import com.cdac.cls_services.generic.ExcelColumn;
 import com.cdac.cls_services.generic.ExcelEngine;
 import lombok.AllArgsConstructor;
@@ -15,15 +15,13 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-import org.apache.poi.ss.usermodel.*;
-
 @Service
 @AllArgsConstructor
 public class CallLogsServiceImpl implements CallLogsService{
 
     private CallLogRepository callLogRepo;
     private OfficeRepository officeRepo;
-    private UserRepository userRepo;
+    private UserManagementRepository userRepo;
     private ExcelEngine excelService;
 
     @Override
@@ -94,18 +92,18 @@ public class CallLogsServiceImpl implements CallLogsService{
     }
 
     @Override
-    public void delete(DeleteCallLogDto dto) {
-        boolean exists = callLogRepo.existsById(dto.getId());
+    public void delete(Integer id) {
+        boolean exists = callLogRepo.existsById(id);
 
         if(exists){
-            callLogRepo.deleteById(dto.getId());
+            callLogRepo.deleteById(id);
         }
     }
 
     @Override
-    public CallLogResponseDto get(GetCallLogDto dto) {
+    public CallLogResponseDto get(Integer id) {
 
-        return callLogRepo.getCallLogById(dto.getId()).orElseThrow(()-> new RuntimeException("No Call Log Found"));
+        return callLogRepo.getCallLogById(id).orElseThrow(()-> new RuntimeException("No Call Log Found"));
     }
 
     @Override
