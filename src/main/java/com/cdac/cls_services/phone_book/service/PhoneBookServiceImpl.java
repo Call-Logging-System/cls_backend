@@ -3,6 +3,7 @@ package com.cdac.cls_services.phone_book.service;
 import com.cdac.cls_services.call_logs.models.OfficeModel;
 import com.cdac.cls_services.call_logs.repositories.OfficeRepository;
 import com.cdac.cls_services.phone_book.dto.OfficeDto;
+import com.cdac.cls_services.phone_book.dto.UpdateOfficeDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,5 +26,18 @@ public class PhoneBookServiceImpl implements PhoneBookService{
         OfficeDto officeDto = new OfficeDto();
         officeDto.setContactNumber(office.getContactNumber());
         return officeDto;
+    }
+
+    @Override
+    public void update(UpdateOfficeDto dto) {
+        OfficeModel office = officeRepo.findById(dto.getId()).orElseThrow(()-> new RuntimeException("Office not found"));
+
+        office.setContactNumber(dto.getContactNumber());
+        office.setAlternateContactNumber(dto.getAlternateContactNumber());
+        office.setEmail(dto.getEmail());
+        office.setAddress(dto.getAddress());
+        office.setIsActive(dto.getIsActive());
+
+        officeRepo.save(office);
     }
 }
