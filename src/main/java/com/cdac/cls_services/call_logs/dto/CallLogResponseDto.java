@@ -30,6 +30,7 @@ public class CallLogResponseDto {
     private Integer officeLevel;
     private String reportedToName;
     private String solvedByName;
+    private String contactNumber;
 
     public CallLogResponseDto(Long id, LocalDate callDate, String issueReported, Character issueType, String reportedBy, Character status,LocalTime callStartTime, LocalTime callEndTime, Integer timeTakenMinutes, String reportedToName, String solvedByName) {
         this.id = id;
@@ -50,7 +51,7 @@ public class CallLogResponseDto {
                               LocalTime callStartTime, LocalTime callEndTime, Character priority,
                               String description, Integer reportedTo, Integer solvedBy,
                               LocalDate releaseDate, Boolean isReleased, String officeUserName,
-                              Integer officeLevel) {
+                              Integer officeLevel, String contactNumber) {
         this.id = id;
         this.callDate = callDate;
         this.issueReported = issueReported;
@@ -68,6 +69,7 @@ public class CallLogResponseDto {
         this.isReleased = isReleased;
         this.officeUserName = officeUserName;
         this.officeLevel = officeLevel;
+        this.contactNumber = contactNumber;
     }
 
 

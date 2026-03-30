@@ -51,7 +51,8 @@ public interface CallLogRepository extends JpaRepository<CallLogModel,Integer> {
         null,
         c.isReleased,
         o.officeUserName,
-        o.officeLevel
+        o.officeLevel,
+        o.contactNumber
     )
     FROM CallLogModel c
     JOIN OfficeModel o ON c.officeId = o.id

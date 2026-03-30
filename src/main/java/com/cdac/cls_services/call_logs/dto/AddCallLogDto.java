@@ -10,6 +10,7 @@ public class AddCallLogDto {
     private Integer id;
     private String officeUserName;
     private Integer officeLevel;
+    private String contactNumber;
     private String issueReported;
     private String callDate;
     private String issueType;

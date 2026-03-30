@@ -63,8 +63,11 @@ public class CallLogsServiceImpl implements CallLogsService{
             OfficeModel officeModel = new OfficeModel();
             officeModel.setOfficeUserName(dto.getOfficeUserName());
             officeModel.setOfficeLevel(dto.getOfficeLevel());
-
+            officeModel.setContactNumber(dto.getContactNumber());
             office = officeRepo.save(officeModel);
+        }else{
+            office.setContactNumber(dto.getContactNumber());
+            officeRepo.save(office);
         }
 
         CallLogModel model = new CallLogModel();
@@ -114,8 +117,11 @@ public class CallLogsServiceImpl implements CallLogsService{
             OfficeModel officeModel = new OfficeModel();
             officeModel.setOfficeUserName(dto.getOfficeUserName());
             officeModel.setOfficeLevel(dto.getOfficeLevel());
-
+            officeModel.setContactNumber(dto.getContactNumber());
             office = officeRepo.save(officeModel);
+        }else{
+            office.setContactNumber(dto.getContactNumber());
+            officeRepo.save(office);
         }
 
         CallLogModel model = callLogRepo.findById(dto.getId()).orElseThrow(()-> new RuntimeException("No Record Found"));
