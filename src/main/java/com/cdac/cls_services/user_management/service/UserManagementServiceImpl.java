@@ -1,5 +1,7 @@
 package com.cdac.cls_services.user_management.service;
 
+import com.cdac.cls_services.exception.RecordAlreadyExistsException;
+import com.cdac.cls_services.exception.RecordNotFoundException;
 import com.cdac.cls_services.user_management.dto.SaveUserDto;
 import com.cdac.cls_services.user_management.dto.UpdateUserDto;
 import com.cdac.cls_services.user_management.dto.UserResponseDto;
@@ -27,7 +29,7 @@ public class UserManagementServiceImpl implements UserManagementService {
         boolean exists = userRepo.existsByEmail(dto.getEmail());
 
         if(exists){
-            throw new RuntimeException("User already exists");
+            throw new RecordAlreadyExistsException("User already exists");
         }else{
             UserModel user = new UserModel();
             user.setName(dto.getUserName());
@@ -46,13 +48,13 @@ public class UserManagementServiceImpl implements UserManagementService {
         if(exists){
             userRepo.deleteById(id);
         }else{
-            throw new RuntimeException("User does not exist");
+            throw new RecordNotFoundException("User does not exist");
         }
     }
 
     @Override
     public void update(UpdateUserDto dto) {
-        UserModel user = userRepo.findById(dto.getUserId()).orElseThrow(() -> new RuntimeException("User does not exist"));
+        UserModel user = userRepo.findById(dto.getUserId()).orElseThrow(() -> new RecordNotFoundException("User does not exist"));
 
         user.setName(dto.getUserName());
         user.setEmail(dto.getEmail());
