@@ -21,4 +21,11 @@ public class GlobalExceptionHandler {
         ResponseDto error = new ResponseDto("404", e.getMessage());
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ResponseDto> handleGeneralException(Exception e) {
+        log.error("Unexpected error: {}", e.getMessage(), e);
+        ResponseDto error = new ResponseDto("500", "An unexpected error occurred");
+        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
 }
