@@ -10,6 +10,7 @@ import com.cdac.cls_services.user_management.repositories.UserManagementReposito
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -42,6 +43,7 @@ public class UserManagementServiceImpl implements UserManagementService {
     }
 
     @Override
+    @Transactional
     public void delete(Integer id) {
         boolean exists = userRepo.existsById(id);
 

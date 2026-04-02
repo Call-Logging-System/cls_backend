@@ -1,8 +1,10 @@
 package com.cdac.cls_services.auth.controller;
 
+import com.cdac.cls_services.auth.dto.ChangePasswordDto;
 import com.cdac.cls_services.auth.util.JwtUtil;
 import com.cdac.cls_services.auth.dto.AuthResponseDto;
 import com.cdac.cls_services.auth.dto.LoginRequestDto;
+import com.cdac.cls_services.exception.ResponseDto;
 import com.cdac.cls_services.user_management.models.UserModel;
 import com.cdac.cls_services.user_management.repositories.UserManagementRepository;
 import jakarta.servlet.http.HttpServletRequest;
@@ -94,6 +96,29 @@ public class AuthController {
                 role,
                 "Authenticated"
         ));
+    }
 
+    @PostMapping("/change-password")
+    public ResponseEntity<?> changePassword(
+            @RequestBody ChangePasswordDto dto,
+            HttpServletRequest request) {
+
+        String token = jwtUtil.extractTokenFromRequest(request);
+        if (token == null || !jwtUtil.isTokenValid(token)) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Not authenticated");
+        }
+
+        String email = jwtUtil.extractEmail(token);
+        UserModel user = userRepo.findByEmail(email).orElseThrow();
+
+        if (!passwordEncoder.matches(dto.getCurrentPassword(), user.getPassword())) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(new ResponseDto("400", "Current password is incorrect"));
+        }
+
+        user.setPassword(passwordEncoder.encode(dto.getNewPassword()));
+        userRepo.save(user);
+
+        return ResponseEntity.ok(new ResponseDto("200", "Password changed successfully"));
     }
 }
