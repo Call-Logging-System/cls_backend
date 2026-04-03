@@ -2,6 +2,7 @@ package com.cdac.cls_services.auth.config;
 
 import com.cdac.cls_services.auth.filter.JwtAuthFilter;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -25,11 +26,18 @@ import java.util.List;
 
 @Configuration
 @EnableWebSecurity
-@AllArgsConstructor
 public class SecurityConfig  {
 
-    private JwtAuthFilter jwtAuthFilter;
+    private final JwtAuthFilter jwtAuthFilter;
     private final UserDetailsService userDetailsService;
+
+    @Value("${cors.allowed-origin}")
+    private String allowedOrigin;
+
+    public SecurityConfig(JwtAuthFilter jwtAuthFilter, UserDetailsService userDetailsService) {
+        this.jwtAuthFilter = jwtAuthFilter;
+        this.userDetailsService = userDetailsService;
+    }
 
     // ── 1. The main security filter chain ─────────────────────────────────────
     // This bean defines the rules for every incoming HTTP request
@@ -77,7 +85,8 @@ public class SecurityConfig  {
 
         // Allow requests from your Angular dev server
         // In production, replace with your actual deployed frontend URL
-        config.setAllowedOrigins(List.of("http://localhost:4200"));
+        //config.setAllowedOrigins(List.of("http://localhost:4200"));
+        config.setAllowedOrigins(List.of(allowedOrigin));
 
         // Allow these HTTP methods
         config.setAllowedMethods(List.of("GET", "POST"));

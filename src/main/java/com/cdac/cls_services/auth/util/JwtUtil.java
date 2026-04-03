@@ -39,18 +39,22 @@ public class JwtUtil {
 
         Cookie cookie = new Cookie("cls_token", token);
         cookie.setHttpOnly(true);       // JS cannot read this
-        cookie.setSecure(false);        // Set true in production (HTTPS)
+        cookie.setSecure(true);        // Set true in production (HTTPS)
         cookie.setPath("/");
         cookie.setMaxAge((int) (expirationMs / 1000));
+
+        cookie.setAttribute("SameSite", "None");
         response.addCookie(cookie);
     }
 
     public void clearCookie(HttpServletResponse response) {
         Cookie cookie = new Cookie("cls_token", "");
         cookie.setHttpOnly(true);
-        cookie.setSecure(false);        // Match the setting above
+        cookie.setSecure(true);        // Match the setting above
         cookie.setPath("/");
         cookie.setMaxAge(0);            // Immediately expire
+
+        cookie.setAttribute("SameSite", "None");
         response.addCookie(cookie);
     }
 
