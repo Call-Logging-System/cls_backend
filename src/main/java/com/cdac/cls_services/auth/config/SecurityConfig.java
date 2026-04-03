@@ -55,7 +55,7 @@ public class SecurityConfig  {
 
                 // Define which routes are public and which require authentication
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/login", "/api/auth/logout").permitAll()     // Allow login and logout without a token
+                        .requestMatchers("/api/auth/login", "/api/auth/logout", "/api/health").permitAll()     // Allow login and logout without a token
                         .anyRequest().authenticated()        // Every other request must have a valid JWT
                 )
 
