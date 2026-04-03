@@ -1,7 +1,6 @@
 package com.cdac.cls_services.phone_book.controller;
 
-import com.cdac.cls_services.call_logs.dto.AddCallLogDto;
-import com.cdac.cls_services.call_logs.dto.ResponseDto;
+import com.cdac.cls_services.exception.ResponseDto;
 import com.cdac.cls_services.call_logs.models.OfficeModel;
 import com.cdac.cls_services.phone_book.dto.OfficeDto;
 import com.cdac.cls_services.phone_book.dto.UpdateOfficeDto;

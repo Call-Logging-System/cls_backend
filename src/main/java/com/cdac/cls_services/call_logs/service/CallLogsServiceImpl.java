@@ -5,6 +5,7 @@ import com.cdac.cls_services.call_logs.models.CallLogModel;
 import com.cdac.cls_services.call_logs.models.OfficeModel;
 import com.cdac.cls_services.call_logs.repositories.CallLogRepository;
 import com.cdac.cls_services.call_logs.repositories.OfficeRepository;
+import com.cdac.cls_services.exception.RecordNotFoundException;
 import com.cdac.cls_services.user_management.repositories.UserManagementRepository;
 import com.cdac.cls_services.generic.ExcelColumn;
 import com.cdac.cls_services.generic.ExcelEngine;
@@ -106,7 +107,7 @@ public class CallLogsServiceImpl implements CallLogsService{
     @Override
     public CallLogResponseDto get(Integer id) {
 
-        return callLogRepo.getCallLogById(id).orElseThrow(()-> new RuntimeException("No Call Log Found"));
+        return callLogRepo.getCallLogById(id).orElseThrow(()-> new RecordNotFoundException("No Call Log Found"));
     }
 
     @Override
@@ -124,7 +125,7 @@ public class CallLogsServiceImpl implements CallLogsService{
             officeRepo.save(office);
         }
 
-        CallLogModel model = callLogRepo.findById(dto.getId()).orElseThrow(()-> new RuntimeException("No Record Found"));
+        CallLogModel model = callLogRepo.findById(dto.getId()).orElseThrow(()-> new RecordNotFoundException("No Record Found"));
 
         model.setCallDate(LocalDate.parse(dto.getCallDate()));
         model.setIssueReported(dto.getIssueReported());

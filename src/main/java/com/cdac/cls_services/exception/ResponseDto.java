@@ -1,9 +1,11 @@
-package com.cdac.cls_services.call_logs.dto;
+package com.cdac.cls_services.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 public class ResponseDto {
     private String status;

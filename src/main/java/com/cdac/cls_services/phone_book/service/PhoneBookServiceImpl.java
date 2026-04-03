@@ -2,6 +2,7 @@ package com.cdac.cls_services.phone_book.service;
 
 import com.cdac.cls_services.call_logs.models.OfficeModel;
 import com.cdac.cls_services.call_logs.repositories.OfficeRepository;
+import com.cdac.cls_services.exception.RecordNotFoundException;
 import com.cdac.cls_services.phone_book.dto.OfficeDto;
 import com.cdac.cls_services.phone_book.dto.UpdateOfficeDto;
 import lombok.AllArgsConstructor;
@@ -23,6 +24,7 @@ public class PhoneBookServiceImpl implements PhoneBookService{
     @Override
     public OfficeDto getOfficeByUserName(String userName) {
         OfficeModel office = officeRepo.findByOfficeUserName(userName);
+        if(office == null){throw new RecordNotFoundException("Office not found");}
         OfficeDto officeDto = new OfficeDto();
         officeDto.setContactNumber(office.getContactNumber());
         return officeDto;
@@ -30,7 +32,7 @@ public class PhoneBookServiceImpl implements PhoneBookService{
 
     @Override
     public void update(UpdateOfficeDto dto) {
-        OfficeModel office = officeRepo.findById(dto.getId()).orElseThrow(()-> new RuntimeException("Office not found"));
+        OfficeModel office = officeRepo.findById(dto.getId()).orElseThrow(()-> new RecordNotFoundException("Office not found"));
 
         office.setContactNumber(dto.getContactNumber());
         office.setAlternateContactNumber(dto.getAlternateContactNumber());
