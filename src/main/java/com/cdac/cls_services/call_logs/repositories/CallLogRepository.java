@@ -59,4 +59,7 @@ public interface CallLogRepository extends JpaRepository<CallLogModel,Integer> {
     WHERE c.id = :id
 """)
     Optional<CallLogResponseDto> getCallLogById(@Param("id") Integer id);
+
+    @Query("SELECT DISTINCT c.issueReported FROM CallLogModel c WHERE LOWER(c.issueReported) LIKE LOWER(CONCAT('%', :issue, '%'))")
+    List<String> searchIssueReported(@Param("issue") String issue);
 }

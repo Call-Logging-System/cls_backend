@@ -12,4 +12,6 @@ public interface PhoneBookService {
     OfficeDto getOfficeByUserName(String userName);
 
     void update(UpdateOfficeDto dto);
+
+    List<OfficeModel> searchOffice(String userName);
 }

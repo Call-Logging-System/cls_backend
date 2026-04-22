@@ -71,4 +71,9 @@ public class CallLogsController {
                 .contentLength(excelBytes.length)
                 .body(excelBytes);
     }
+
+    @PostMapping("/searchIssue")
+    public List<String> searchIssue(@RequestBody String issue){
+        return callLogsService.searchIssue(issue);
+    }
 }

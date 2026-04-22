@@ -253,6 +253,11 @@ public class CallLogsServiceImpl implements CallLogsService{
         return excelService.exportByMonth(logs, columns, CallLogResponseDto::getCallDate);
     }
 
+    @Override
+    public List<String> searchIssue(String issue) {
+        return callLogRepo.searchIssueReported(issue);
+    }
+
     private String resolveIssueType(String c) {
         if (c == null) return "";
         return switch (c) {

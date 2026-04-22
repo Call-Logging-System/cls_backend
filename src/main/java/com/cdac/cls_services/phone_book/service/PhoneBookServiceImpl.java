@@ -24,7 +24,7 @@ public class PhoneBookServiceImpl implements PhoneBookService{
     @Override
     public OfficeDto getOfficeByUserName(String userName) {
         OfficeModel office = officeRepo.findByOfficeUserName(userName);
-        if(office == null){throw new RecordNotFoundException("Office not found");}
+        if(office == null){ return null;}
         OfficeDto officeDto = new OfficeDto();
         officeDto.setContactNumber(office.getContactNumber());
         return officeDto;
@@ -41,5 +41,10 @@ public class PhoneBookServiceImpl implements PhoneBookService{
         office.setIsActive(dto.getIsActive());
 
         officeRepo.save(office);
+    }
+
+    @Override
+    public List<OfficeModel> searchOffice(String userName) {
+        return officeRepo.findByOfficeUserNameContainingIgnoreCase(userName);
     }
 }

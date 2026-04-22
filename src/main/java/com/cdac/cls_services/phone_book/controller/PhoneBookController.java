@@ -32,4 +32,9 @@ public class PhoneBookController {
         phoneBookService.update(dto);
         return ResponseEntity.ok(new ResponseDto("200","Office details updated successfully"));
     }
+
+    @PostMapping("/searchOffice")
+    public List<OfficeModel> searchOffice(@RequestBody String userName) {
+        return phoneBookService.searchOffice(userName);
+    }
 }

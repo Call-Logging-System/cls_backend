@@ -23,4 +23,6 @@ public interface CallLogsService {
     List<OfficeModel> getOffices();
 
     byte[] exportAllCallLogs();
+
+    List<String> searchIssue(String issue);
 }
