@@ -1,6 +1,7 @@
 package com.cdac.cls_services.auth.config;
 
 import com.cdac.cls_services.auth.filter.JwtAuthFilter;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -62,6 +63,12 @@ public class SecurityConfig  {
                 // Tell Spring Security to NOT create HTTP sessions
                 // Each request must carry its own JWT — no server-side session memory
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+
+                .exceptionHandling(ex -> ex
+                        .authenticationEntryPoint((request, response, authException) -> {
+                            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
+                        })
+                )
 
                 // Register our authentication provider (DB + BCrypt)
                 .authenticationProvider(authenticationProvider())
